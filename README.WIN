@@ -1,0 +1,69 @@
+ShooterGame - Shooter in care timpul este alterat
+
+Alterarea timpului:
+- viteza de trecere a timpului este controlata de un obiect (bomba): ((( adaugat nou )))
+	- cat timp bomba este libera timpul trece realist ((( adaugat nou )))
+	- cat timp bomba este la jucatorul first player timpul trece mai repede ((( adaugat nou )))
+	- cat timp bomba este la adversari timpul trece mai lent ((( adaugat nou )))
+- viteza jocului este afisata, alertand jucatorul printr-o modificare a textului
+
+Caracteristici:
+- implementare: Unity 2020.1.1f1
+- Unity graphics asset: Render Pipeline Asset
+- platforma: Windows (64 bit) (cu componentele potrivite de Unity se poate construi si pentru alte platforme)
+
+Fizica:
+- mesh collider pentru toate componentele mediului
+- gravitatie pentru jucatorul first-person, influentand coborarea pantelor, caderea de pe obiecte, saritura
+- coliziuni avansate cu collidere capsula si cu functionalitatile Rigidbody, Raycast si RaycastHit din Unity
+- animatii
+- alterarea timpului se reflecta asupra obiectelor jocului
+- forte asupra obiectelor din scena (deplasare, spargere) cand explodeaza grenade: ((( adaugat nou )))
+	- forte asupra cadavrelor adversarilor cand explodeaza o grenada aproape ((( adaugat nou )))
+	- spargerea unor ziduri din mediu cand sunt lovite de explozia grenadei ((( adaugat nou )))
+- particle system: ((( adaugat nou )))
+	- grenade cu fum ((( adaugat nou )))
+
+Grafica:
+- anti-aliasing cu MSAA
+- adaugare elemente de interfata (scor, viata, crosshair, timp, alterarea timpului, minimap) deasupra obiectelor jocului
+- minimap cu proiectie ortografica
+- surse de lumina punctiforme, reflexii, umbre, texturi
+- randare volumetrica: ((( adaugat nou )))
+	- explozii volumetrice manuale in cazul grenadelor trase din arma ((( adaugat nou )))
+	- fum volumetric creat cu particle system in cazul grenadelor cu fum ((( adaugat nou )))
+- aiming ((( adaugat nou )))
+- adversarii sangereaza spectaculos cand sunt nimeriti de gloante ((( adaugat nou )))
+
+Inteligenta artificiala:
+- deplasarea adversarilor cu A* :
+	- construirea automata a grafului mediului bazata pe geometria obiectelor
+	- rularea algoritmului A* pentru fiecare adversar
+- state machines: ((( adaugat nou )))
+	- starile sunt definite de un obiect ce poate fi ridicat de agenti (bomba) ((( adaugat nou )))
+	- implementat pe post de inteligenta artificiala in comportamentul botilor ((( adaugat nou )))
+	- adversarii folosesc un model de tip state machine pentru a decide care e destinatia folosita in algoritmul A* ((( adaugat nou )))
+	- tranzitiile sunt dictate in functie de evenimente din joc ((( adaugat nou )))
+	- starea initiala (aleasa echitabil dintre starile initiale posibile) influenteaza comportamentul adversarului ((( adaugat nou )))
+	- stari: ((( adaugat nou )))
+		- walking (ataca jucatorul; stare initiala posibila) ((( adaugat nou )))
+		- running (ataca jucatorul cand acesta are bomba, alearga mai repede) ((( adaugat nou )))
+		- finding bomb (cauta bomba; stare initiala posibila) ((( adaugat nou )))
+		- placing bomb (agentul care are bomba o duce la destinatie) ((( adaugat nou )))
+		- lost bomb (bomba este libera; agentii aleg intre a cauta bomba si a ataca jucatorul) ((( adaugat nou )))
+- mai multe tipuri de comportament pentru diferite tipuri de agenti ((( adaugat nou )))
+	- melee enemy - loveste la APROPIERE, loveste puternic ((( adaugat nou )))
+	- puke enemy - trage de la distanta, loveste la CONTACT, dar mai slab ((( adaugat nou )))
+
+In plus...
+- shooter with a bomb ((( adaugat nou )))
+- bullet tracer
+- shoot sound
+- sound hit by enemy
+- melee sound ((( adaugat nou )))
+- puke sound ((( adaugat nou )))
+- shoot grenade sound ((( adaugat nou )))
+- bomb exploded sound ((( adaugat nou )))
+- gas grenade sound ((( adaugat nou )))
+- respawn
+- meniu initial, respawn, battleEnd, pause ((( adaugat nou )))
